@@ -10,13 +10,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/sendmail", async (req, res) => {
-  const { from, to, subject, text } = req.body;
   try {
-    const sendMessage = await mail(from, to, subject, text);
+    const sendMessage = await mail(req.body);
     res.status(200).send(sendMessage);
   } catch (err) {
     res.send(err.message);
   }
 });
+
 
 module.exports = router

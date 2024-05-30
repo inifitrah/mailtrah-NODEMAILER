@@ -1,4 +1,8 @@
-KEY_NAME = mail_brove
-HOST = example.com
-YOUR_KEY = Key
-YOUR_LOGIN = Email
+# config SMTP
+SMTP_HOST = smtp.example.com
+SMTP_PORT = 587
+SMTP_USER_LOGIN = example@example.com
+SMTP_PASSWORD = password
+
+# cors
+CORS_ORIGIN_REGEX = r'^https?:\/\/(.*\.)?example\.com$'

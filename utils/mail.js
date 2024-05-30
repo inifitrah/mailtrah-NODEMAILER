@@ -1,40 +1,19 @@
 const nodemailer = require("nodemailer");
 
-async function mail(from, to, subject, text) {
-  const port = 587;
-  const host = process.env.HOST;
-  const YOUR_LOGIN = process.env.YOUR_LOGIN;
-  const YOUR_KEY = process.env.YOUR_KEY;
-
+async function mail(option) {
   const transporter = nodemailer.createTransport({
-    host,
-    port,
-    auth: {
-      user: YOUR_LOGIN,
-      pass: YOUR_KEY,
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT || 587,
+    auth: { 
+      user: process.env.SMTP_USER_LOGIN ,
+      pass: process.env.SMTP_PASSWORD,
     },
   });
-
   try {
-    await transporter.sendMail({
-      from: {
-        name: from.name,
-        address: from.address,
-      },
-      to: {
-        name: to.name,
-        address: to.address,
-      },
-      subject,
-      text,
-    });
-    //when successfully sending the message
+   const mail = await transporter.sendMail({...option})
     return {
-      message: "successful sending",
-      from,
-      to,
-      subject,
-      text,
+      message: "Successful sending",
+      ...mail
     };
   } catch (error) {
     throw Error(error.message);

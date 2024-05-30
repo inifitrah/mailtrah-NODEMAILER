@@ -1,0 +1,1 @@
+This code is as simple as implementing the nodemailer library. as simple as configuring the transporter.
