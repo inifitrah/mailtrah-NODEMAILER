@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 router.post("/sendmail", async (req, res) => {
   try {
     const sendMessage = await mail(req.body);
-    res.status(200).send(sendMessage);
+    res.status(200).json(sendMessage);
   } catch (err) {
     res.send(err.message);
   }

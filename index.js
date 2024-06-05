@@ -10,10 +10,10 @@ const corsOptions = {
   origin: process.env.CORS_ORIGIN_REGEX,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-app.use(cors(corsOptions))
+app.use(cors())
 
 
-const port = 9999
+const port = 3000
 app.use(express.json())
 
 const controllerMail = require("./controllers/mail.controller")
